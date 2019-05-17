@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.wrap">
+    <div :class="$style.wrap" @click=handleClick>
         <div
             :class="{
                 [$style.left]: true,
@@ -10,6 +10,7 @@
         <div
             :class="{
                 [$style.right]: true,
+				[$style.inactive]: mode === 'ai'
             }">
             <FontAwesomeIcon :icon="computerIcon" :class="$style.faTimes" /> vs AI
         </div>
@@ -41,6 +42,7 @@ export default {
     methods: {
        
     }
+	<SplitButton :mode="mode" @gameMode="modeSwitch"/>
 };
 </script>
 
@@ -82,6 +84,11 @@ export default {
 .faTimes {
     font-size: 20px;
     margin-right: 10px;
-}
-
+ },
+    modeSwitch() {
+        this.resetGame()
+        this.mode = this.mode === "2Player" ? "ai" : "2Player";
+    },
+    resetGame() {
+	}
 </style>
