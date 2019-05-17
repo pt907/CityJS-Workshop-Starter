@@ -40,10 +40,12 @@ export default {
         }
     },
     methods: {
-       
-    }
-	<SplitButton :mode="mode" @gameMode="modeSwitch"/>
+        handleClick: function() {
+            this.$emit('gameMode')
+            }
+		}
 };
+
 </script>
 
 <style module>
@@ -84,11 +86,5 @@ export default {
 .faTimes {
     font-size: 20px;
     margin-right: 10px;
- },
-    modeSwitch() {
-        this.resetGame()
-        this.mode = this.mode === "2Player" ? "ai" : "2Player";
-    },
-    resetGame() {
-	}
+ }
 </style>
